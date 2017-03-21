@@ -58,6 +58,19 @@ py_library(
     ],
 )
 
+py_library(
+    name = "vgg16",
+    srcs = [
+        "vgg16_model.py",
+    ],
+    visibility = ["//visibility:public"],
+    deps = [
+        ":dataset",
+        "//inception/slim",
+    ],
+)
+
+
 py_binary(
     name = "imagenet_eval",
     srcs = [
@@ -103,6 +116,17 @@ py_binary(
 )
 
 py_binary(
+    name = "imagenet_vgg16_train",
+    srcs = [
+        "imagenet_vgg16_train.py",
+    ],
+    deps = [
+        ":imagenet_data",
+        ":vgg16_train",
+    ],
+)
+
+py_binary(
     name = "imagenet_distributed_train",
     srcs = [
         "imagenet_distributed_train.py",
@@ -134,6 +158,18 @@ py_library(
         ":inception",
     ],
 )
+
+py_library(
+    name = "vgg16_train",
+    srcs = [
+        "vgg16_train.py",
+    ],
+    deps = [
+        ":image_processing",
+        ":vgg16",
+    ],
+)
+
 
 py_library(
     name = "inception_distributed_train",

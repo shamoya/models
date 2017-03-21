@@ -90,11 +90,23 @@ py_test(
     ],
 )
 
+
+py_library(
+    name = "vgg",
+    srcs = ["vgg_model.py"],
+    deps = [
+        ":ops",
+        ":scopes",
+    ],
+)
+
+
 py_library(
     name = "slim",
     srcs = ["slim.py"],
     deps = [
         ":inception",
+        ":vgg",
         ":losses",
         ":ops",
         ":scopes",
