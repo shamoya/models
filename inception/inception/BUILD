@@ -137,6 +137,19 @@ py_binary(
     ],
 )
 
+
+py_binary(
+    name = "imagenet_vgg16_distributed_train",
+    srcs = [
+        "imagenet_vgg16_distributed_train.py",
+    ],
+    deps = [
+        ":imagenet_data",
+        ":vgg16_distributed_train",
+    ],
+)
+
+
 py_binary(
     name = "flowers_train",
     srcs = [
@@ -181,6 +194,19 @@ py_library(
         ":inception",
     ],
 )
+
+
+py_library(
+    name = "vgg16_distributed_train",
+    srcs = [
+        "vgg16_distributed_train.py",
+    ],
+    deps = [
+        ":image_processing",
+        ":vgg16",
+    ],
+)
+
 
 py_binary(
     name = "build_image_data",
